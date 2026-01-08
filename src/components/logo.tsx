@@ -10,13 +10,13 @@ interface LogoProps {
 
 export function Logo({ size = "md", showText = true, className }: LogoProps) {
   const sizes = {
-    sm: { icon: "w-8 h-7", text: "text-lg" },
-    md: { icon: "w-12 h-11", text: "text-2xl" },
-    lg: { icon: "w-16 h-14", text: "text-3xl" },
+    sm: { icon: "w-7 h-6", text: "text-base", gap: "gap-1.5" },
+    md: { icon: "w-10 h-9", text: "text-xl", gap: "gap-2" },
+    lg: { icon: "w-14 h-12", text: "text-2xl", gap: "gap-2.5" },
   };
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div className={cn("flex items-center", sizes[size].gap, className)}>
       <svg
         viewBox="0 0 100 90"
         fill="none"
@@ -39,7 +39,7 @@ export function Logo({ size = "md", showText = true, className }: LogoProps) {
         />
       </svg>
       {showText && (
-        <span className={cn("font-serif font-medium text-cream-light", sizes[size].text)}>
+        <span className={cn("font-sans font-medium text-cream-light", sizes[size].text)}>
           Pinely
         </span>
       )}

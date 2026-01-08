@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const timeLabel =
       time === "5min" ? "just a few minutes" :
@@ -73,6 +73,7 @@ Generate one gentle, specific next action for them.`;
       { text: prompt },
     ]);
 
+    console.log(result.toString())
     const action = result.response.text().trim();
 
     if (!action) {

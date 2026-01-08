@@ -46,7 +46,7 @@ const cardVariants = {
 export function Clusters({ clusters, onPickOne, onSelectIdea, onBack, onStartOver, isLoading }: ClustersProps) {
   return (
     <motion.div
-      className="flex-1 flex flex-col px-8 py-12 overflow-auto"
+      className="flex-1 flex flex-col px-8 pt-20 pb-12 overflow-auto"
       variants={pageVariants}
       initial="initial"
       animate="animate"

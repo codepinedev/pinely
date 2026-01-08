@@ -58,7 +58,7 @@ export function Focus({
 
   return (
     <motion.div
-      className="flex-1 flex flex-col items-center justify-center px-8 py-12"
+      className="flex-1 flex flex-col items-center justify-center px-8 pt-20 pb-12"
       variants={pageVariants}
       initial="initial"
       animate="animate"

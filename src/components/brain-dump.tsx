@@ -28,7 +28,7 @@ export function BrainDump({ value, onChange, onOrganize, isLoading }: BrainDumpP
 
   return (
     <motion.div
-      className="flex-1 flex flex-col items-center justify-center px-8 py-12"
+      className="flex-1 flex flex-col items-center justify-center px-8 pt-20 pb-12"
       variants={pageVariants}
       initial="initial"
       animate="animate"
@@ -37,7 +37,10 @@ export function BrainDump({ value, onChange, onOrganize, isLoading }: BrainDumpP
     >
       <div className="w-full max-w-2xl flex flex-col gap-8">
         {/* Header */}
-        <div className="text-center space-y-2">
+        <div className="text-center space-y-3">
+          <h1 className="font-serif text-4xl text-cream-light tracking-tight">
+            Brain Dump
+          </h1>
           <p className="text-cream-muted text-lg">
             Let it all out. We'll make sense of it together.
           </p>

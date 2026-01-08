@@ -131,8 +131,8 @@ export default function Home() {
   return (
     <>
       {/* Header with logo */}
-      <header className="fixed top-0 left-0 right-0 z-20 p-4">
-        <Logo size="sm" />
+      <header className="fixed top-0 left-0 right-0 z-20 px-6 py-4">
+        <Logo size="md" showText={false} />
       </header>
 
       <ProgressIndicator currentStep={currentStep} />
