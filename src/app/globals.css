@@ -9,10 +9,13 @@
   --accent: #8FA47B;
 }
 
-html,
-body {
+html {
   height: 100%;
-  overflow: hidden;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {

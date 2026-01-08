@@ -58,7 +58,7 @@ export function Focus({
 
   return (
     <motion.div
-      className="flex-1 flex flex-col items-center justify-center px-8 pt-20 pb-12"
+      className="flex-1 flex flex-col items-center justify-start md:justify-center px-4 md:px-8 pt-20 pb-12 min-h-screen"
       variants={pageVariants}
       initial="initial"
       animate="animate"
@@ -80,7 +80,7 @@ export function Focus({
           <p className="text-cream-muted text-sm uppercase tracking-wider">
             Let's focus on
           </p>
-          <h1 className="font-serif text-3xl md:text-4xl text-cream-light leading-snug">
+          <h1 className="font-serif text-2xl md:text-4xl text-cream-light leading-snug">
             {selectedIdea}
           </h1>
         </div>

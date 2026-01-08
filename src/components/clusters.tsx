@@ -46,7 +46,7 @@ const cardVariants = {
 export function Clusters({ clusters, onPickOne, onSelectIdea, onBack, onStartOver, isLoading }: ClustersProps) {
   return (
     <motion.div
-      className="flex-1 flex flex-col px-8 pt-20 pb-12 overflow-auto"
+      className="flex-1 flex flex-col px-4 md:px-8 pt-20 pb-12 min-h-screen"
       variants={pageVariants}
       initial="initial"
       animate="animate"
@@ -65,10 +65,10 @@ export function Clusters({ clusters, onPickOne, onSelectIdea, onBack, onStartOve
 
         {/* Header */}
         <div className="text-center space-y-3">
-          <h1 className="font-serif text-4xl text-cream-light tracking-tight">
+          <h1 className="font-serif text-3xl md:text-4xl text-cream-light tracking-tight">
             Here's what I noticed
           </h1>
-          <p className="text-cream-muted text-lg max-w-md mx-auto">
+          <p className="text-cream-muted text-base md:text-lg max-w-md mx-auto">
             Click on any thought to focus on it, or let me pick one for you.
           </p>
         </div>

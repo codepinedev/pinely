@@ -131,7 +131,7 @@ export default function Home() {
   return (
     <>
       {/* Header with logo */}
-      <header className="fixed top-0 left-0 right-0 z-20 px-6 py-4">
+      <header className="fixed top-0 left-0 right-0 z-20 px-4 md:px-6 py-3 md:py-4 bg-night-200/80 backdrop-blur-md border-b border-night-50/30">
         <Logo size="md" showText={false} />
       </header>
 

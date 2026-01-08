@@ -14,8 +14,8 @@ const steps = [
 
 export function ProgressIndicator({ currentStep }: ProgressIndicatorProps) {
   return (
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-10">
-      <div className="flex items-center gap-2">
+    <div className="fixed top-3 md:top-4 left-1/2 -translate-x-1/2 z-30">
+      <div className="flex items-center gap-2 bg-night-200/80 backdrop-blur-md px-4 py-2 rounded-full">
         {steps.map((step, index) => (
           <div key={step.num} className="flex items-center">
             <div
