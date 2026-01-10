@@ -26,6 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
+      <head>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="b8700180-e927-4da5-a2ee-ddd99d2df0bd"></script>
+      </head>
       <body className="antialiased min-h-screen bg-night-200">
         <main className="min-h-screen flex flex-col">
           {children}
