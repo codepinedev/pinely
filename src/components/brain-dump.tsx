@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Sparkle } from "lucide-react";
 
 interface BrainDumpProps {
   value: string;
@@ -77,7 +78,10 @@ export function BrainDump({ value, onChange, onOrganize, isLoading }: BrainDumpP
                 Thinking...
               </span>
             ) : (
-              "Organize"
+              <span className="flex gap-2 items-center">
+                <Sparkle/>
+                Organize
+              </span>
             )}
           </Button>
         </div>

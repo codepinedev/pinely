@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Cluster } from "@/lib/storage";
 import { cn } from "@/lib/utils";
@@ -122,7 +122,10 @@ export function Clusters({ clusters, onPickOne, onSelectIdea, onBack, onStartOve
                 Choosing...
               </span>
             ) : (
-              "Pick one for me"
+                            <span className="flex gap-2 items-center">
+                <Sparkle/>
+              Pick one for me
+              </span>
             )}
           </Button>
           <button
