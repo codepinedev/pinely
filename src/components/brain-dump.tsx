@@ -1,9 +1,12 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { VoiceButton } from "@/components/ui/voice-button";
 import { cn } from "@/lib/utils";
 import { Sparkle } from "lucide-react";
+import { useSpeechRecognition } from "@/hooks/use-speech-recognition";
 
 interface BrainDumpProps {
   value: string;
@@ -18,7 +21,43 @@ const pageVariants = {
   exit: { opacity: 0, y: -20 },
 };
 
-export function BrainDump({ value, onChange, onOrganize, isLoading }: BrainDumpProps) {
+export function BrainDump({
+  value,
+  onChange,
+  onOrganize,
+  isLoading,
+}: BrainDumpProps) {
+  const {
+    isSupported,
+    state,
+    transcript,
+    interimTranscript,
+    error,
+    startListening,
+    stopListening,
+  } = useSpeechRecognition();
+
+  // Track the last appended transcript to avoid duplicates
+  const lastTranscriptRef = useRef("");
+
+  // Append finalized transcript to the textarea value - each phrase on a new line
+  useEffect(() => {
+    if (transcript && transcript !== lastTranscriptRef.current) {
+      // Each spoken phrase goes on its own line (new thought)
+      const separator = value.trim() ? "\n" : "";
+      onChange(value.trimEnd() + separator + transcript);
+      lastTranscriptRef.current = transcript;
+    }
+  }, [transcript, value, onChange]);
+
+  const handleVoiceClick = () => {
+    if (state === "recording") {
+      stopListening();
+    } else {
+      startListening();
+    }
+  };
+
   const placeholders = [
     "What's swirling around in your head right now?\n\nDon't worry about making sense. Just let it flow...",
     "Pour out whatever's on your mind...\n\nMessy is fine. This is just for you.",
@@ -47,14 +86,14 @@ export function BrainDump({ value, onChange, onOrganize, isLoading }: BrainDumpP
           </p>
         </div>
 
-        {/* Textarea */}
+        {/* Textarea with Voice Button */}
         <div className="relative">
           <textarea
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
             className={cn(
-              "w-full h-[300px] md:h-[400px] p-6 md:p-8 text-base md:text-lg leading-relaxed",
+              "w-full h-[300px] md:h-[400px] p-6 md:p-8 pb-16 text-base md:text-lg leading-relaxed",
               "bg-surface border-0 rounded-2xl md:rounded-3xl resize-none",
               "text-cream placeholder:text-cream-muted/60",
               "focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-4 focus:ring-offset-night-200",
@@ -62,6 +101,28 @@ export function BrainDump({ value, onChange, onOrganize, isLoading }: BrainDumpP
             )}
             autoFocus
           />
+
+          {/* Voice Button - positioned bottom right */}
+          <div className="absolute bottom-4 right-4 flex items-center gap-2">
+            {/* Show interim transcript while recording */}
+            {interimTranscript && (
+              <span className="text-sm text-cream-muted/70 italic max-w-[200px] truncate">
+                {interimTranscript}...
+              </span>
+            )}
+            <VoiceButton
+              state={state}
+              isSupported={isSupported}
+              onClick={handleVoiceClick}
+            />
+          </div>
+
+          {/* Error message */}
+          {error && (
+            <p className="absolute -bottom-6 left-0 text-sm text-red-400">
+              {error}
+            </p>
+          )}
         </div>
 
         {/* Action */}
@@ -79,7 +140,7 @@ export function BrainDump({ value, onChange, onOrganize, isLoading }: BrainDumpP
               </span>
             ) : (
               <span className="flex gap-2 items-center">
-                <Sparkle/>
+                <Sparkle />
                 Organize
               </span>
             )}
