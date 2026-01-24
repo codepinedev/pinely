@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
 import "./globals.css";
+import { FeedbackWidget } from "@/components/feedback-widget";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <main className="min-h-screen flex flex-col">
           {children}
         </main>
+        <FeedbackWidget />
       </body>
     </html>
   );
